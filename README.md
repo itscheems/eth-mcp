@@ -11,6 +11,8 @@
 
 </div>
 
+> [English](README.md) | [简体中文](./docs/README.zh-CN.md)
+
 A Model Context Protocol (MCP) server implemented in Rust that enables AI agents to query Ethereum balances and simulate token swaps on Uniswap.
 
 **[Quick Start Guide](docs/quick-start.md)** - Get up and running quickly.
