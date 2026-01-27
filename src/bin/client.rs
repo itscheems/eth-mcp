@@ -14,7 +14,7 @@
 
 use anyhow::Result;
 use dotenv::dotenv;
-use rmcp::{model::CallToolRequestParam, service::ServiceExt, transport::TokioChildProcess};
+use rmcp::{model::CallToolRequestParams, service::ServiceExt, transport::TokioChildProcess};
 use serde_json::json;
 use std::env;
 use std::path::PathBuf;
@@ -70,13 +70,15 @@ async fn main() -> Result<()> {
     // Test 1: Get ETH balance (mock address: Vitalik's address)
     println!("Test 1: Getting ETH balance...");
     let eth_balance_result = service
-        .call_tool(CallToolRequestParam {
+        .call_tool(CallToolRequestParams {
+            meta: None,
             name: "get_balance".into(),
             arguments: json!({
                 "wallet_address": wallet_address
             })
             .as_object()
             .cloned(),
+            task: None,
         })
         .await?;
 
@@ -94,7 +96,8 @@ async fn main() -> Result<()> {
     // Test 2: Get ERC20 token balance (USDC)
     println!("Test 2: Getting USDC token balance...");
     let token_balance_result = service
-        .call_tool(CallToolRequestParam {
+        .call_tool(CallToolRequestParams {
+            meta: None,
             name: "get_balance".into(),
             arguments: json!({
                 "wallet_address": wallet_address,
@@ -102,6 +105,7 @@ async fn main() -> Result<()> {
             })
             .as_object()
             .cloned(),
+            task: None,
         })
         .await?;
 

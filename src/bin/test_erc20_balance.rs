@@ -13,7 +13,7 @@
 // limitations under the License.
 
 use anyhow::Result;
-use rmcp::{model::CallToolRequestParam, service::ServiceExt, transport::TokioChildProcess};
+use rmcp::{model::CallToolRequestParams, service::ServiceExt, transport::TokioChildProcess};
 use serde_json::json;
 use std::path::PathBuf;
 use tokio::process::Command;
@@ -47,7 +47,8 @@ async fn main() -> Result<()> {
     println!("   Token contract: 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48 (USDC)\n");
 
     let result = service
-        .call_tool(CallToolRequestParam {
+        .call_tool(CallToolRequestParams {
+            meta: None,
             name: "get_balance".into(),
             arguments: json!({
                 "wallet_address": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
@@ -55,6 +56,7 @@ async fn main() -> Result<()> {
             })
             .as_object()
             .cloned(),
+            task: None,
         })
         .await?;
 
