@@ -43,7 +43,7 @@ schemars = "1.0"
 # Structured logging
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
-rust_decimal = { version = "1.33", features = ["serde-float"] }
+rust_decimal = { version = "1.40", features = ["serde-float"] }
 anyhow = "1.0"
 thiserror = "1.0"
 dotenv = "0.15"
