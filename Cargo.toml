@@ -30,7 +30,7 @@ path = "src/bin/test_swap.rs"
 [dependencies]
 tokio = { version = "1.0", features = ["full", "net"] }
 rmcp = { version = "0.8.3", features = ["server", "client", "transport-child-process"] }
-ethers = "1.0"
+ethers = "2.0"
 # ABI encoding/decoding
 ethabi = "18.0"
 # JSON serialization
