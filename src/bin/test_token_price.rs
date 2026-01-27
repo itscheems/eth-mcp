@@ -13,7 +13,7 @@
 // limitations under the License.
 
 use anyhow::Result;
-use rmcp::{model::CallToolRequestParam, service::ServiceExt, transport::TokioChildProcess};
+use rmcp::{model::CallToolRequestParams, service::ServiceExt, transport::TokioChildProcess};
 use serde_json::json;
 use std::path::PathBuf;
 use tokio::process::Command;
@@ -88,13 +88,15 @@ async fn main() -> Result<()> {
     info!("Calling get_token_price tool with symbol: ETH");
 
     let result1 = match service
-        .call_tool(CallToolRequestParam {
+        .call_tool(CallToolRequestParams {
+            meta: None,
             name: "get_token_price".into(),
             arguments: json!({
                 "token": "ETH"
             })
             .as_object()
             .cloned(),
+            task: None,
         })
         .await
     {
@@ -125,13 +127,15 @@ async fn main() -> Result<()> {
     info!("Calling get_token_price tool with symbol: USDC");
 
     let result2 = match service
-        .call_tool(CallToolRequestParam {
+        .call_tool(CallToolRequestParams {
+            meta: None,
             name: "get_token_price".into(),
             arguments: json!({
                 "token": "USDC"
             })
             .as_object()
             .cloned(),
+            task: None,
         })
         .await
     {
@@ -163,13 +167,15 @@ async fn main() -> Result<()> {
     info!("Calling get_token_price tool with address: 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48");
 
     let result3 = match service
-        .call_tool(CallToolRequestParam {
+        .call_tool(CallToolRequestParams {
+            meta: None,
             name: "get_token_price".into(),
             arguments: json!({
                 "token": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
             })
             .as_object()
             .cloned(),
+            task: None,
         })
         .await
     {
@@ -200,13 +206,15 @@ async fn main() -> Result<()> {
     info!("Calling get_token_price tool with symbol: WETH");
 
     let result4 = match service
-        .call_tool(CallToolRequestParam {
+        .call_tool(CallToolRequestParams {
+            meta: None,
             name: "get_token_price".into(),
             arguments: json!({
                 "token": "WETH"
             })
             .as_object()
             .cloned(),
+            task: None,
         })
         .await
     {

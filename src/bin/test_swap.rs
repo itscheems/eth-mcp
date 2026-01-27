@@ -13,7 +13,7 @@
 // limitations under the License.
 
 use anyhow::Result;
-use rmcp::{model::CallToolRequestParam, service::ServiceExt, transport::TokioChildProcess};
+use rmcp::{model::CallToolRequestParams, service::ServiceExt, transport::TokioChildProcess};
 use serde_json::json;
 use std::path::PathBuf;
 use tokio::process::Command;
@@ -84,7 +84,8 @@ async fn main() -> Result<()> {
     println!("Test 1: V2 Swap ETH -> USDC");
     println!("Swapping 0.1 ETH for USDC\n");
     let result1 = match service
-        .call_tool(CallToolRequestParam {
+        .call_tool(CallToolRequestParams {
+            meta: None,
             name: "swap_tokens".into(),
             arguments: json!({
                 "from_token": "ETH",
@@ -95,6 +96,7 @@ async fn main() -> Result<()> {
             })
             .as_object()
             .cloned(),
+            task: None,
         })
         .await
     {
@@ -121,7 +123,8 @@ async fn main() -> Result<()> {
     println!("Test 2: V2 Swap USDC -> ETH");
     println!("Swapping 100 USDC for ETH\n");
     let result2 = match service
-        .call_tool(CallToolRequestParam {
+        .call_tool(CallToolRequestParams {
+            meta: None,
             name: "swap_tokens".into(),
             arguments: json!({
                 "from_token": USDC_ADDRESS,
@@ -132,6 +135,7 @@ async fn main() -> Result<()> {
             })
             .as_object()
             .cloned(),
+            task: None,
         })
         .await
     {
@@ -158,7 +162,8 @@ async fn main() -> Result<()> {
     println!("Test 3: V2 Swap USDC -> WETH");
     println!("Swapping 100 USDC for WETH\n");
     let result3 = match service
-        .call_tool(CallToolRequestParam {
+        .call_tool(CallToolRequestParams {
+            meta: None,
             name: "swap_tokens".into(),
             arguments: json!({
                 "from_token": USDC_ADDRESS,
@@ -169,6 +174,7 @@ async fn main() -> Result<()> {
             })
             .as_object()
             .cloned(),
+            task: None,
         })
         .await
     {
@@ -199,7 +205,8 @@ async fn main() -> Result<()> {
     println!("Test 4: V3 Swap ETH -> USDC (0.05% fee pool)");
     println!("Swapping 0.1 ETH for USDC\n");
     let result4 = match service
-        .call_tool(CallToolRequestParam {
+        .call_tool(CallToolRequestParams {
+            meta: None,
             name: "swap_tokens".into(),
             arguments: json!({
                 "from_token": "ETH",
@@ -211,6 +218,7 @@ async fn main() -> Result<()> {
             })
             .as_object()
             .cloned(),
+            task: None,
         })
         .await
     {
@@ -237,7 +245,8 @@ async fn main() -> Result<()> {
     println!("Test 5: V3 Swap USDC -> ETH (0.3% fee pool)");
     println!("Swapping 100 USDC for ETH\n");
     let result5 = match service
-        .call_tool(CallToolRequestParam {
+        .call_tool(CallToolRequestParams {
+            meta: None,
             name: "swap_tokens".into(),
             arguments: json!({
                 "from_token": USDC_ADDRESS,
@@ -249,6 +258,7 @@ async fn main() -> Result<()> {
             })
             .as_object()
             .cloned(),
+            task: None,
         })
         .await
     {
@@ -275,7 +285,8 @@ async fn main() -> Result<()> {
     println!("Test 6: V3 Swap USDC -> WETH (1% fee pool)");
     println!("Swapping 100 USDC for WETH\n");
     let result6 = match service
-        .call_tool(CallToolRequestParam {
+        .call_tool(CallToolRequestParams {
+            meta: None,
             name: "swap_tokens".into(),
             arguments: json!({
                 "from_token": USDC_ADDRESS,
@@ -287,6 +298,7 @@ async fn main() -> Result<()> {
             })
             .as_object()
             .cloned(),
+            task: None,
         })
         .await
     {
@@ -313,7 +325,8 @@ async fn main() -> Result<()> {
     println!("Test 7: Default Swap (V2, no version specified)");
     println!("Swapping 0.01 ETH for USDC\n");
     let result7 = match service
-        .call_tool(CallToolRequestParam {
+        .call_tool(CallToolRequestParams {
+            meta: None,
             name: "swap_tokens".into(),
             arguments: json!({
                 "from_token": "ETH",
@@ -323,6 +336,7 @@ async fn main() -> Result<()> {
             })
             .as_object()
             .cloned(),
+            task: None,
         })
         .await
     {
