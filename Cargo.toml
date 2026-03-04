@@ -28,7 +28,7 @@ name = "test_swap"
 path = "src/bin/test_swap.rs"
 
 [dependencies]
-tokio = { version = "1.49", features = ["full", "net"] }
+tokio = { version = "1.50", features = ["full", "net"] }
 rmcp = { version = "0.17.0", features = ["server", "client", "transport-child-process"] }
 ethers = "2.0"
 # ABI encoding/decoding
